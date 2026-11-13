@@ -1,0 +1,428 @@
+/* Department of Lost & Found: style.css */
+
+:root {
+  --cream: #FFF8F0;
+  --tan: #C08552;
+  --brown: #8C5A3C;
+  --dark: #4B2E2B;
+  --stamp-red: #B3261E;
+
+  /* crumpled white paper texture drawn in CSS, no image file needed */
+  --paper: #f4f3f0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.018 0.022' numOctaves='5' seed='11' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23ffffff' surfaceScale='4'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E") center / 600px 600px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* crumpled cardboard texture drawn in CSS, no image file needed */
+  background-color: var(--tan);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04 0.012' numOctaves='5' seed='7' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23d9a066' surfaceScale='3'%3E%3CfeDistantLight azimuth='45' elevation='62'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 600px 600px;
+  color: var(--dark);
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.3rem; }
+
+/* Header and nav */
+header {
+  background: var(--tan);
+  border-bottom: 4px solid var(--dark);
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 0.75rem;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+nav a {
+  color: var(--dark);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--dark);
+  border-radius: 6px 6px 0 0; /* folder-tab look */
+  background: var(--cream);
+  font-family: 'Special Elite', monospace;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background: var(--dark);
+  color: var(--cream);
+}
+
+/* Main content */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Paper-style card */
+.notice,
+.card,
+.claim-form {
+  background: var(--paper);
+  border: 3px solid var(--tan);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 6px 6px 0 var(--brown);
+}
+
+.notice p:first-of-type {
+  font-size: 1.2rem;
+}
+
+/* Hero image on the home page */
+.notice > img {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 6px rgba(75, 46, 43, 0.3);
+  margin-bottom: 1rem;
+}
+
+/* Lists */
+ol, ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Special text */
+strong { color: var(--dark); }
+em { color: var(--stamp-red); }
+
+/* Links */
+a {
+  color: var(--dark);
+}
+
+main a:hover,
+footer a:hover {
+  background: rgba(192, 133, 82, 0.4); /* highlighter tan */
+  text-decoration: none;
+}
+
+/* Buttons */
+button,
+.btn {
+  background: var(--tan);
+  color: var(--dark);
+  font-family: 'Special Elite', monospace;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  border: 3px solid var(--dark);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--dark);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.2s, color 0.2s;
+}
+
+button:hover,
+.btn:hover {
+  background: var(--dark);
+  color: var(--cream);
+}
+
+button:active,
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--dark);
+}
+
+/* Rubber stamp */
+.stamp {
+  display: inline-block;
+  font-family: 'Special Elite', monospace;
+  text-transform: uppercase;
+  color: var(--stamp-red);
+  border: 4px solid var(--stamp-red);
+  border-radius: 6px;
+  padding: 0.2rem 0.8rem;
+  transform: rotate(-4deg);
+  opacity: 0.85;
+  letter-spacing: 2px;
+}
+
+/* Reviews section */
+.reviews {
+  margin-top: 3rem;
+}
+
+/* heading and subtitle sit on the textured background, so give them a paper label */
+.reviews > h2 {
+  display: table;
+  margin: 0 auto 0.5rem;
+  padding: 0.3rem 1.2rem;
+  background: var(--cream);
+  border: 3px solid var(--dark);
+  text-align: center;
+}
+
+.subtitle {
+  display: table;
+  margin: 0 auto 2rem;
+  padding: 0.2rem 1rem;
+  background: var(--cream);
+  text-align: center;
+  font-style: italic;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards side by side */
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.review-card {
+  background: var(--paper);
+  border: 3px solid var(--tan);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 6px 6px 0 var(--brown);
+}
+
+/* staggered middle card (delete this rule for a level row) */
+.review-card:nth-child(2) {
+  margin-top: 2.5rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--tan);
+  border: 3px solid var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 1.4rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+/* use this if you swap initials for a photo (give the img the avatar class) */
+img.avatar {
+  object-fit: cover;
+  display: block;
+}
+
+.review-card h3 {
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.stars {
+  margin: 0.5rem 0 0;
+  font-size: 1.6rem;
+  color: #f5b700;
+  letter-spacing: 2px;
+}
+
+/* Found Items page */
+.items-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row, so 6 items make two even rows */
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+}
+
+.items-grid li:nth-child(odd) .card { transform: rotate(-1.5deg); }
+.items-grid li:nth-child(even) .card { transform: rotate(1.5deg); }
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 6px rgba(75, 46, 43, 0.3);
+  margin-bottom: 0.75rem;
+}
+
+.card .tag {
+  display: inline-block;
+  background: var(--tan);
+  border: 2px solid var(--dark);
+  border-radius: 12px;
+  padding: 0 0.7rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Claim form page */
+.claim-form {
+  background: var(--paper);
+  border-color: var(--dark);
+}
+
+.claim-form .line {
+  border-bottom: 2px dotted var(--dark);
+  margin: 1.2rem 0;
+  padding-bottom: 0.2rem;
+}
+
+/* 404 page */
+body.error-page {
+  background: var(--dark);
+  color: var(--cream);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+body.error-page .stamp {
+  font-size: 4rem;
+  color: var(--cream);
+  border-color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+body.error-page a {
+  color: var(--tan);
+}
+
+/* Footer */
+footer {
+  background: var(--dark);
+  color: var(--cream);
+  text-align: center;
+  padding: 1rem;
+  border-top: 4px solid var(--tan);
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--tan);
+}
+
+footer a:hover {
+  color: var(--dark);
+  background: var(--tan);
+}
+
+/* Coffee ring stain (decoration) */
+main::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  width: 90px;
+  height: 90px;
+  border: 6px solid rgba(140, 90, 60, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Images in general */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Small screens */
+@media (max-width: 700px) {
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+  .notice, .card, .claim-form { padding: 1.25rem; }
+
+  /* stack the items and reviews so the text stays readable */
+  .items-grid,
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+  .review-card:nth-child(2) {
+    margin-top: 0;
+  }
+}
+
+/* Claim form fields and result */
+.claim-form label {
+  font-family: 'Special Elite', monospace;
+}
+
+.claim-form select {
+  margin-top: 0.4rem;
+  width: 100%;
+  max-width: 420px;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--dark);
+  background: #fff;
+  border: 2px solid var(--dark);
+  border-radius: 4px;
+}
+
+.claim-form input[type="radio"] {
+  margin: 0 0.3rem 0 1rem;
+  accent-color: var(--dark);
+}
+
+.result {
+  text-align: center;
+}
+
+.result .stamp {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+/* 404 page extras */
+.excuses {
+  text-align: left;
+  max-width: 560px;
+}
+
+.footnote {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

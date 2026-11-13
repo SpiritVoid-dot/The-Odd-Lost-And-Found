@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File a Claim | Lost And Found</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Department of Lost And Found</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="items.html">Found Items</a>
+      <a href="claim.html">File a Claim</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="claim-form">
+      <h2>File a Claim</h2>
+      <p>Spotted something that belongs to you? Fill out the form below. Please use a pen. Or a pencil. Or a crayon. We are not picky, we are just very slow.</p>
+
+      <form id="claim-form">
+
+        <div class="line">
+          <label for="item">Which item do you want?</label><br>
+          <select id="item" name="item" required>
+            <option value="" disabled selected>Choose an item...</option>
+            <option>A Shadow Without an Owner</option>
+            <option>USB Drive Labeled "Do Not Open"</option>
+            <option>A Single French Fry</option>
+            <option>Phone Charger That Charges Nothing</option>
+            <option>A Ghost's Library Card</option>
+            <option>A Calculator That Gives Wrong Answers on Purpose</option>
+          </select>
+        </div>
+
+        <div class="line">
+          <p>Is it yours?</p>
+          <label><input type="radio" name="yours" value="yes" required> Yes</label>
+          <label><input type="radio" name="yours" value="no"> No</label>
+        </div>
+
+        <button type="submit">Submit Claim</button>
+      </form>
+
+      <div id="result" class="result" hidden></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Not responsible for lost souls, only, probably, sometimes, lost gloves. | <a href="https://github.com/SpiritVoid-dot/lost-and-found">GitHub</a></p>
+  </footer>
+
+  <script>
+    var form = document.getElementById("claim-form");
+    var result = document.getElementById("result");
+
+    form.addEventListener("submit", function (event) {
+      // stop the page from reloading, since there is no server to send this to
+      event.preventDefault();
+
+      var item = document.getElementById("item").value;
+      var yours = form.elements["yours"].value;
+
+      var extra = "";
+      if (yours === "no") {
+        extra = " You said it is not yours. We will deliver it anyway.";
+      }
+
+      result.innerHTML =
+        '<span class="stamp">Claim Pending</span>' +
+        "<p>Claim received for <strong>" + item + "</strong>." + extra + "</p>" +
+        "<p>Your item will be delivered in <strong>682 business days, 912 lunar cycles, " +
+        "746 fortnites, and 87 trillion shakes</strong>, and maybe longer. Don't blame me, blame the warehouse holding the stuff that got turned into a BJJ dojo. Hey at least the classes are pretty fun.</p>";
+      result.hidden = false;
+      form.hidden = true;
+    });
+  </script>
+
+</body>
+</html>
